@@ -9,9 +9,6 @@ Things you may want to cover:
 
 * System dependencies
 
-* Configuration
-
-* Database creation
 # Definition of Database
 
 ## messages table
@@ -19,19 +16,19 @@ Things you may want to cover:
 |:--|:--|:--|
 |body|text||
 |image|string||
-|group_id|integer|null:false|
-|user_id|integer|null:false|
+|group_id|references|null:false|
+|user_id|references|null:false|
 |created_at|datetime|null:false|
 |updated_at|datetime|null:false
 
-## user
+## users table
 |column|type|option|
 |:--|:--|:--|
 |e-mail|string|null:false,unique:true|
 |password|string|null:false|
 |user_name|string|null:false,attach index|
 
-## groups
+## groups table
 |column|type|
 |:--|:--|
 |group_name|string|null:false|
@@ -40,8 +37,8 @@ Things you may want to cover:
 ### (for connecting users and groups as n : m)
 |column|type|
 |:--|:--|
-|groups_id|integer|
-|users_id|integer|
+|groups_id|references|
+|users_id|references|
 * Database initialization
 
 * How to run the test suite
@@ -53,5 +50,3 @@ Things you may want to cover:
 * ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
