@@ -40,7 +40,7 @@ Things you may want to cover:
 |groups_id|references|
 |users_id|references|
 
-#associations definition
+#association definition
 
 ##users table & groups table
 m:n (=>through users_groups table)
