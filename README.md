@@ -12,9 +12,9 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
-#Definition of Database
+# Definition of Database
 
-##messages table
+## messages table
 |column|type|option|
 |:--|:--|:--|
 |body|text||
@@ -24,20 +24,20 @@ Things you may want to cover:
 |created_at|datetime|null:false|
 |updated_at|datetime|null:false
 
-##user
+## user
 |column|type|option|
 |:--|:--|:--|
 |e-mail|string|null:false,unique:true|
 |password|string|null:false|
 |user_name|string|null:false,attach index|
 
-##groups
+## groups
 |column|type|
 |:--|:--|
 |group_name|string|null:false|
 
-##users_groups
-###(for connecting users and groups as n : m)
+## users_groups
+### (for connecting users and groups as n : m)
 |column|type|
 |:--|:--|
 |groups_id|integer|
