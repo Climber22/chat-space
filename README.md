@@ -32,15 +32,15 @@
 |groups_id|references|
 |users_id|references|
 
-#association definition
+# association definition
 
-##users table & groups table
+## users table & groups table
 m:n (=>through users_groups table)
 
-##users table & messages table
+## users table & messages table
 1:n
 
-##groups table & messages table
+## groups table & messages table
 1:n
 
 
