@@ -1,6 +1,3 @@
-
-
-
 # Definition of Database
 
 ## messages table
