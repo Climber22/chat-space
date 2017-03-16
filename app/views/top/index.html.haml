@@ -62,7 +62,7 @@
       =form_for(@message) do |f|
         %div.wrapper
           =f.text_field :body,placeholder:"type a message",class:"message-area__text"
-        =f.label :image,class:"fa fa-picture-o message-area__image" do
-          %span
+        =f.label :image,class:"message-area__image" do
+          %i.fa.fa-picture-o(aria-hidden="true")
         =f.file_field :image,class:"message-area__image",style: "display:none;"
         =f.submit "Send",{class:"message-area__button"}
