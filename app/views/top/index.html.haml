@@ -2,9 +2,9 @@
   %p
     チャットグループが作成されました
 
-%div.main
-  %div.left-content
-    %div.left-content__user
+%.main
+  %.left-content
+    %.left-content__user
       %h1
         ryosukemaehira
       =link_to "#",class:"user__icon user__icon--right" do
@@ -27,30 +27,30 @@
           sampleグループ
         %p
           まだメッセージはありません
-  %div.right-content
-    %div.group-bar
-      %div.group-bar__text
+  %.right-content
+    %.group-bar
+      %.group-bar__text
         %h1
           sampleグループ
         %p
           Menbars:ryosukemaeshima
       =link_to "Edit" ,"#",class:"group-bar__edit"
-    %div.chat-area
-      %div.chat-message
+    %.chat-area
+      %.chat-message
         %span.chat-message__name
           ryosukemaeshima
         %span.chat-message__date
           2016/10/02 06:27:07
         %p.chat-message__text
           testmessage1
-      %div.chat-message
+      %.chat-message
         %span.chat-message__name
           ryosukemaeshima
         %span.chat-message__date
           2016/10/02 06:27:07
         %p.chat-message__text
           testmessage1
-      %div.chat-message
+      %.chat-message
         %span.chat-message__name
           ryosukemaeshima
         %span.chat-message__date
@@ -58,9 +58,9 @@
         %p.chat-message__text
           testmessage1
 
-    %div.message-area
+    %.message-area
       =form_for(@message) do |f|
-        %div.wrapper
+        %.wrapper
           =f.text_field :body,placeholder:"type a message",class:"message-area__text"
         =f.label :image,class:"message-area__image" do
           %i.fa.fa-picture-o(aria-hidden="true")
