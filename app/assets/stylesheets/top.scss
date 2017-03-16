@@ -1,3 +1,196 @@
 // Place all the styles related to the top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html,body{
+  height: 100%;
+}
+
+header{
+  background-color: #38aef0;
+  text-align: center;
+  width:100%;
+  p{
+    color: white;
+  }
+}
+
+.main{
+  height: 100%;
+  .left-content{
+    position: relative;
+    height: 100%;
+    float: left;
+    color:white;
+    width: 300px;
+
+    .left-content__user{
+    background-color: #253141;
+    padding: 0 20px;
+    position: relative;
+
+      h1{
+    line-height: 110px;
+    font-size:16px;
+    font-weight: bold;
+      }
+
+    .user__icon{
+      color: white;
+      text-decoration: none;
+    }
+    .user__icon--left{
+      position: absolute;
+      right:60px;
+      top:45px;
+    }
+    .user__icon--right{
+      position: absolute;
+      right: 30px;
+      top:45px;
+    }
+    }
+
+    .group-name{
+      position: absolute;
+      top:110px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 20px 20px 0 20px;
+      background-color: #2f3e51;
+
+      .group-name__list{
+        margin-bottom: 40px;
+        h2{
+          font-size: 15px;
+          margin-bottom: 5px;
+        }
+        p{
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  .right-content{
+    position: relative;;
+    background-color: #333333;
+    height: 100%;
+    min-width: 300px;
+    max-width: 100vw;
+    overflow: hidden;    //感動したけど原理がわからん
+
+    .group-bar{
+      background-color: #ffffff;
+      padding: 0 40px;
+      height: 110px;
+      border-bottom: solid 1px #eeeeee;
+      @include clearfix;
+
+      .group-bar__text{
+        float: left;
+
+         h1{
+        margin-top: 35px;
+        font-size: 20px;
+        color: #333333;
+        }
+
+        p{
+          color:#999999;
+          margin: 15px 0;
+        }
+      }
+
+      .group-bar__edit{
+        float: right;
+        margin-top:28px;
+        padding: 0 20px;
+        line-height: 40px;
+        text-decoration: none;
+        border: solid 1px #38aef0;
+        color: #38aef0;
+      }
+    }
+
+    .chat-area{
+      position: absolute;
+      top:110px;
+      left: 0;
+      right: 0;
+      bottom: 90px;
+      // overflow: auto;
+      width: 100%;
+      padding: 46px 40px 1px 40px;
+      background-color: #fafafa;
+      @include clearfix;
+
+      .chat-message{
+        margin-bottom: 40px;
+
+        .chat-message__name{
+          margin-right: 10px;
+          font-size: 16px;
+          color: #434a54;
+          font-weight: bold;
+        }
+
+        .chat-message__date{
+          color: #999999;
+          font-size: 12px;
+        }
+        .chat-message__text{
+          margin-top: 10px;
+          color: #434a54;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .message-area{
+      position: absolute;
+      bottom:0;
+      left: 0;
+      right:0;
+      margin-bottom: 0;
+      padding: 20px 40px;
+      background-color: #dddddd;
+      height:50px;
+      overflow: hidden;
+
+      .wrapper{
+        height: 50px;
+        color: #434a54;
+        float: left;
+        width: 100%;
+        margin-right: -130px;
+        padding-right: 130px;
+        box-sizing: border-box;
+        .message-area__text{
+          width: 100%;
+          height: 100%;
+          border: none;
+          padding-left: 10px;
+        }
+      }
+      .message-area__image{
+        position:absolute;
+        right:125px;
+        top:37px;
+        width: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .message-area__button{
+        background-color: #38aef0;
+        padding: 0 20px;
+        height: 50px;
+        width: 100px;
+        color: white;
+        border: none;
+        float: left;
+        margin-left: 30px;
+      }
+    }
+  }
+}

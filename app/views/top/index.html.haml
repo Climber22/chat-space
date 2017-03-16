@@ -1,0 +1,68 @@
+%header
+  %p
+    チャットグループが作成されました
+
+%div.main
+  %div.left-content
+    %div.left-content__user
+      %h1
+        ryosukemaehira
+      =link_to "#",class:"user__icon user__icon--right" do
+        %i.fa.fa-cog.fa-lg(aria-hidden="true")
+      =link_to "#",class:"user__icon user__icon--left" do
+        %i.fa.fa-pencil-square-o.fa-lg(aria-hidden="true")
+    %ul.group-name
+      %li.group-name__list
+        %h2
+          神
+        %p
+          test
+      %li.group-name__list
+        %h2
+          aeaaaaaa
+        %p
+          まだメッセージはありません。
+      %li.group-name__list
+        %h2
+          sampleグループ
+        %p
+          まだメッセージはありません
+  %div.right-content
+    %div.group-bar
+      %div.group-bar__text
+        %h1
+          sampleグループ
+        %p
+          Menbars:ryosukemaeshima
+      =link_to "Edit" ,"#",class:"group-bar__edit"
+    %div.chat-area
+      %div.chat-message
+        %span.chat-message__name
+          ryosukemaeshima
+        %span.chat-message__date
+          2016/10/02 06:27:07
+        %p.chat-message__text
+          testmessage1
+      %div.chat-message
+        %span.chat-message__name
+          ryosukemaeshima
+        %span.chat-message__date
+          2016/10/02 06:27:07
+        %p.chat-message__text
+          testmessage1
+      %div.chat-message
+        %span.chat-message__name
+          ryosukemaeshima
+        %span.chat-message__date
+          2016/10/02 06:27:07
+        %p.chat-message__text
+          testmessage1
+
+    %div.message-area
+      =form_for(@message) do |f|
+        %div.wrapper
+          =f.text_field :body,placeholder:"type a message",class:"message-area__text"
+        =f.label :image,class:"fa fa-picture-o message-area__image" do
+          %span
+        =f.file_field :image,class:"message-area__image",style: "display:none;"
+        =f.submit "Send",{class:"message-area__button"}
