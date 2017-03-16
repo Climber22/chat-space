@@ -7,9 +7,9 @@
     .left-content__user
       %h1
         ryosukemaehira
-      =link_to "#",class:"user__icon user__icon--right" do
+      =link_to "#", class:"user__icon user__icon--right" do
         %i.fa.fa-cog.fa-lg(aria-hidden="true")
-      =link_to "#",class:"user__icon user__icon--left" do
+      =link_to "#", class:"user__icon user__icon--left" do
         %i.fa.fa-pencil-square-o.fa-lg(aria-hidden="true")
     %ul.group-name
       %li.group-name__list
@@ -34,7 +34,7 @@
           sampleグループ
         %p
           Menbars:ryosukemaeshima
-      =link_to "Edit" ,"#",class:"group-bar__edit"
+      =link_to "Edit" , "#", class:"group-bar__edit"
     .chat-area
       .chat-message
         %span.chat-message__name
@@ -61,8 +61,8 @@
     .message-area
       =form_for(@message) do |f|
         .wrapper
-          =f.text_field :body,placeholder:"type a message",class:"message-area__text"
-        =f.label :image,class:"message-area__image" do
+          =f.text_field :body, placeholder:"type a message", class:"message-area__text"
+        =f.label :image, class:"message-area__image" do
           %i.fa.fa-picture-o(aria-hidden="true")
-        =f.file_field :image,class:"message-area__image",style: "display:none;"
-        =f.submit "Send",class:"message-area__button"
+        =f.file_field :image, class:"message-area__image", style: "display:none;"
+        =f.submit "Send", class:"message-area__button"
