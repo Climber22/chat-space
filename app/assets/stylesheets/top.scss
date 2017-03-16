@@ -23,7 +23,7 @@ header{
     color:white;
     width: 300px;
 
-    .left-content__user{
+    &__user{
     background-color: #253141;
     padding: 0 20px;
     position: relative;
@@ -59,7 +59,7 @@ header{
       padding: 20px 20px 0 20px;
       background-color: #2f3e51;
 
-      .group-name__list{
+      &__list{
         margin-bottom: 40px;
         h2{
           font-size: 15px;
@@ -87,7 +87,7 @@ header{
       border-bottom: solid 1px #eeeeee;
       @include clearfix;
 
-      .group-bar__text{
+      &__text{
         float: left;
 
          h1{
@@ -128,18 +128,18 @@ header{
       .chat-message{
         margin-bottom: 40px;
 
-        .chat-message__name{
+        &__name{
           margin-right: 10px;
           font-size: 16px;
           color: #434a54;
           font-weight: bold;
         }
 
-        .chat-message__date{
+        &__date{
           color: #999999;
           font-size: 12px;
         }
-        .chat-message__text{
+        &__text{
           margin-top: 10px;
           color: #434a54;
           font-size: 14px;
