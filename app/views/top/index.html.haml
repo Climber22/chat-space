@@ -8,9 +8,9 @@
       %h1
         ryosukemaehira
       =link_to "#", class:"user__icon user__icon--right" do
-        %i.fa.fa-cog.fa-lg(aria-hidden="true")
+        =fa_icon "cog"
       =link_to "#", class:"user__icon user__icon--left" do
-        %i.fa.fa-pencil-square-o.fa-lg(aria-hidden="true")
+        =fa_icon "pencil-square-o"
     %ul.group-name
       %li.group-name__list
         %h2
@@ -63,6 +63,6 @@
         .wrapper
           =f.text_field :body, placeholder:"type a message", class:"message-area__text"
         =f.label :image, class:"message-area__image" do
-          %i.fa.fa-picture-o(aria-hidden="true")
+          =fa_icon "picture-o"
         =f.file_field :image, class:"message-area__image", style: "display:none;"
         =f.submit "Send", class:"message-area__button"
