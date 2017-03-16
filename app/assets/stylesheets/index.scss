@@ -1,12 +1,9 @@
-// Place all the styles related to the top controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 html,body{
   height: 100%;
 }
 
 header{
-  background-color: #38aef0;
+  background-color: $header;
   text-align: center;
   width:100%;
   p{
@@ -24,7 +21,7 @@ header{
     width: 300px;
 
     &__user{
-    background-color: #253141;
+    background-color: $left-content-upper;
     padding: 0 20px;
     position: relative;
 
@@ -57,7 +54,7 @@ header{
       right: 0;
       bottom: 0;
       padding: 20px 20px 0 20px;
-      background-color: #2f3e51;
+      background-color: $left-content-bottom;
 
       &__list{
         margin-bottom: 40px;
@@ -81,7 +78,7 @@ header{
     overflow: hidden;    //感動したけど原理がわからん
 
     .group-bar{
-      background-color: #ffffff;
+      background-color: $right-content-upper;
       padding: 0 40px;
       height: 110px;
       border-bottom: solid 1px #eeeeee;
@@ -122,7 +119,7 @@ header{
       // overflow: auto;
       width: 100%;
       padding: 46px 40px 1px 40px;
-      background-color: #fafafa;
+      background-color: $right-content-middle;
       @include clearfix;
 
       .chat-message{
@@ -154,7 +151,7 @@ header{
       right:0;
       margin-bottom: 0;
       padding: 20px 40px;
-      background-color: #dddddd;
+      background-color: $right-content-bottom;
       height:50px;
       overflow: hidden;
 
@@ -176,7 +173,7 @@ header{
       .message-area__image{
         position:absolute;
         right:125px;
-        top:37px;
+        top:32px;
         width: 50px;
         padding-left: 10px;
         padding-right: 10px;
