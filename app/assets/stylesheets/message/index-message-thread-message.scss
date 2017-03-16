@@ -1,0 +1,20 @@
+.chat-message{
+  margin-bottom: 40px;
+
+  &__name{
+    margin-right: 10px;
+    font-size: 16px;
+    color: $chat-description;
+    font-weight: bold;
+  }
+
+  &__date{
+    color: $sub-description;
+    font-size: 12px;
+  }
+  &__text{
+    margin-top: 10px;
+    color: $chat-description;
+    font-size: 14px;
+  }
+}
