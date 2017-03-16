@@ -15,7 +15,7 @@
     }
 
     p{
-      color:#999999;
+      color:$sub-description;
       margin: 15px 0;
     }
   }
@@ -26,7 +26,7 @@
     padding: 0 20px;
     line-height: 40px;
     text-decoration: none;
-    border: solid 1px $edit-botton;
-    color: $edit-botton;
+    border: solid 1px $edit-send-botton;
+    color: $edit-send-botton;
   }
 }
