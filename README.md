@@ -1,6 +1,3 @@
-== README
-
-
 # Definition of Database
 
 ## messages table
