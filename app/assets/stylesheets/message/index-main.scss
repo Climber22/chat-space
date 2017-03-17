@@ -1,17 +1,17 @@
-html,body{
-  height: 100%;
+html,
+body {
+    height: 100%;
 }
 
-header{
-  background-color: $header;
-  text-align: center;
-  width:100%;
-  p{
-    color: white;
-  }
+header {
+    background-color: $header;
+    text-align: center;
+    width: 100%;
+    p {
+        color: white;
+    }
 }
 
-.main{
-  height: 100%;
-
+.main {
+    height: 100%;
 }
