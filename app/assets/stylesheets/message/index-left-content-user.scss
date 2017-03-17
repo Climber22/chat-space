@@ -1,0 +1,26 @@
+.user{
+  background-color: $left-content-upper;
+  padding: 0 20px;
+  position: relative;
+
+  h1{
+    line-height: 110px;
+    font-size:16px;
+    font-weight: bold;
+  }
+
+  &__icon{
+    color: white;
+    text-decoration: none;
+    &--left{
+      position: absolute;
+      right:60px;
+      top:45px;
+    }
+    &--right{
+      position: absolute;
+      right: 30px;
+      top:45px;
+    }
+  }
+}
