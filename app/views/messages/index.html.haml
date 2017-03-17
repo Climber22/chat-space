@@ -4,58 +4,40 @@
 .main
   .left-content
     .user
-      %h1
-        ryosukemaehira
+      %h1 ryosukemaehira
       = link_to "#", class: "user__icon user__icon--right" do
         = fa_icon "cog lg"
       = link_to "#", class: "user__icon user__icon--left" do
         = fa_icon "pencil-square-o lg"
     %ul.group-name-list
       %li.group-name-list__item
-        %h2
-          神
-        %p
-          test
+        %h2 神
+        %p test
       %li.group-name-list__item
-        %h2
-          aeaaaaaa
-        %p
-          まだメッセージはありません。
+        %h2 aeaaaaaa
+        %p まだメッセージはありません。
       %li.group-name-list__item
-        %h2
-          sampleグループ
-        %p
-          まだメッセージはありません
+        %h2 sampleグループ
+        %p まだメッセージはありません
   .right-content
     .group-bar
       .group-bar__text
-        %h1
-          sampleグループ
-        %p
-          Menbars:ryosukemaeshima
+        %h1 sampleグループ
+        %p Menbars:ryosukemaeshima
       = link_to "Edit" , "#", class: "group-bar__edit"
     .chat-area
       .chat-message
-        %span.chat-message__name
-          ryosukemaeshima
-        %span.chat-message__date
-          2016/10/02 06:27:07
-        %p.chat-message__text
-          testmessage1
+        %span.chat-message__name ryosukemaeshima
+        %span.chat-message__date 2016/10/02 06:27:07
+        %p.chat-message__text testmessage1
       .chat-message
-        %span.chat-message__name
-          ryosukemaeshima
-        %span.chat-message__date
-          2016/10/02 06:27:07
-        %p.chat-message__text
-          testmessage1
+        %span.chat-message__name ryosukemaeshima
+        %span.chat-message__date 2016/10/02 06:27:07
+        %p.chat-message__text testmessage1
       .chat-message
-        %span.chat-message__name
-          ryosukemaeshima
-        %span.chat-message__date
-          2016/10/02 06:27:07
-        %p.chat-message__text
-          testmessage1
+        %span.chat-message__name ryosukemaeshima
+        %span.chat-message__date 2016/10/02 06:27:07
+        %p.chat-message__text testmessage1
 
     .message-area
       = form_for(@message) do |f|
