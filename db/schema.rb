@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170319101728) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+ActiveRecord::Schema.define(version: 20170319051510) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
@@ -36,7 +37,6 @@ ActiveRecord::Schema.define(version: 20170319101728) do
     t.index ["name"], name: "index_users_on_name", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
   create_table "users_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "groups_id_id"
     t.integer  "users_id_id"
@@ -45,5 +45,4 @@ ActiveRecord::Schema.define(version: 20170319101728) do
     t.index ["groups_id_id"], name: "index_users_groups_on_groups_id_id", using: :btree
     t.index ["users_id_id"], name: "index_users_groups_on_users_id_id", using: :btree
   end
-
 end
