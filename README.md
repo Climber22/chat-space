@@ -15,7 +15,7 @@
 |:--|:--|:--|
 |e-mail|string|null:false,unique:true|
 |password|string|null:false|
-|user_name|string|null:false,attach index|
+|name|string|null:false,attach index|
 
 ## groups table
 |column|type|
