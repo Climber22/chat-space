@@ -4,7 +4,8 @@
 .main
   .left-content
     .user
-      %h1 ryosukemaehira
+      %h1
+        = current_user.name
       = link_to edit_user_registration_path, class: "user__icon user__icon--right" do
         = fa_icon "cog lg"
       = link_to new_group_path, class: "user__icon user__icon--left" do
