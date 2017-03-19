@@ -22,7 +22,7 @@
 |:--|:--|
 |group_name|string|null:false|
 
-## user_groups
+## group_users table
 ### (for connecting users and groups as n : m)
 |column|type|
 |:--|:--|
