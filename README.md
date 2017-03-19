@@ -22,12 +22,12 @@
 |:--|:--|
 |group_name|string|null:false|
 
-## users_groups
+## user_groups
 ### (for connecting users and groups as n : m)
 |column|type|
 |:--|:--|
-|groups_id|references|
-|users_id|references|
+|group_id|references|
+|user_id|references|
 
 # association definition
 
