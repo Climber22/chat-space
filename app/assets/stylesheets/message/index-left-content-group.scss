@@ -8,14 +8,14 @@
     height: 100%;
     background-color: $left-content-bottom;
     &__item {
-        a{
+        a {
             text-decoration: none;
             color: white;
             display: block;
             padding: 20px;
             width: 100%;
         }
-         &--upper {
+        &--upper {
             font-size: 15px;
             margin-bottom: 5px;
         }
