@@ -6,7 +6,12 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:group_id])
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    group = Group.create(group_params)
+    redirect_to controller: "messages", action: "index", group_id: group.id
   end
 
   def create
