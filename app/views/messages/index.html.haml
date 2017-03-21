@@ -3,7 +3,7 @@
     = render partial: "./user-name"
     = render partial: "./group-name-bar", locals: {groups: @groups}
   .right-content
-    = render partial: "./group-bar", locals: {groups: @groups}
+    = render partial: "./group-bar", locals: {group_menbers: @group_menbers,groups: @groups}
     .chat-area
       .chat-message
         %span.chat-message__name ryosukemaeshima
