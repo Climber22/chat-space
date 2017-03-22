@@ -16,9 +16,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.new
-    status = group.save(group_params)
-    if status do
+    group = Group.new(group_params)
+    status = group.save
+    if status then
     redirect_to controller: "messages", action: "index", group_id: group.id, notice: "Successfully create group."
     else
       redirect_to new_group_path,notice: "unfortunately, you failed to create group. Please try again."
