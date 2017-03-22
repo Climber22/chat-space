@@ -10,8 +10,9 @@ class GroupsController < ApplicationController
   end
 
   def update
-    group = Group.update(group_params)
-    redirect_to  group_messages_path(group_id: group.id)
+    @group = Group.find(params[:id])
+    @group.update(group_params)
+    redirect_to  group_messages_path(group_id: params[:id]), notice: "successfully update group"
   end
 
   def create
