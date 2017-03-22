@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
     if status then
     redirect_to controller: "messages", action: "index", group_id: group.id, notice: "Successfully create group."
     else
-      redirect_to new_group_path,notice: "unfortunately, you failed to create group. Please try again."
+      redirect_to new_group_path,notice: "Unfortunately, you failed to create group. Please try again."
     end
   end
 
@@ -31,6 +31,6 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name,:user_ids=>[])
+    params.require(:group).permit(:name,user_ids:[])
   end
 end
