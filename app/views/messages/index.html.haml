@@ -1,7 +1,6 @@
 .main
   .left-content
-    = render partial: "./partial-templates/user-name"
-    = render partial: "./partial-templates/group-name-bar", locals: {groups: @groups}
+    = render partial: "./partial-templates/left-group-name", locals: {groups: @groups}
   .right-content
     = render partial: "./partial-templates/group-bar", locals: {group_menbers: @group_menbers,groups: @groups}
     .chat-area

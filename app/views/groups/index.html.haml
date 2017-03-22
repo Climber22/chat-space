@@ -3,6 +3,5 @@
 
 .main
   .left-content
-    = render partial: "./partial-templates/user-name"
-    = render partial: "./partial-templates/group-name-bar", locals: {groups: @groups}
+    = render partial: "./partial-templates/left-group-name", locals: {groups: @groups}
   .right-content
