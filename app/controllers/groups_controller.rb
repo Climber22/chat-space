@@ -10,8 +10,8 @@ class GroupsController < ApplicationController
   end
 
   def update
-    group = Group.create(group_params)
-    redirect_to controller: "messages", action: "index", group_id: group.id
+    group = Group.update(group_params)
+    redirect_to  group_messages_path(group_id: group.id)
   end
 
   def create
