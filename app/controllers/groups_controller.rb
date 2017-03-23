@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
 
-  before_action :set_group
+  before_action :set_group, only:[:edit, :update]
 
   def index
     @message = ""
