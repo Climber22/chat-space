@@ -11,7 +11,7 @@
         = f.label :user_ids_1, "チャットメンバー"
       .chat-group-form__field--right
         #chat-group-users
-          =f.collection_check_boxes :user_ids, User.all, :id, :name
+          =f.collection_check_boxes :user_ids, User.where.not(id: current_user.id), :id, :name
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
