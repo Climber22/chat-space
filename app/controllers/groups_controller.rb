@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
 
+  before_action :set_group
+
   def index
     @message = ""
     @groups = current_user.groups
@@ -12,24 +14,26 @@ class GroupsController < ApplicationController
   def create
     group = Group.new(group_params)
     if group.save then
-    redirect_to group_messages_path(group_id: group.id), notice: "Successfully create group."
+    redirect_to group_messages_path(group), notice: "Successfully create group."
     else
       redirect_to new_group_path,notice: "Unfortunately, you failed to create group. Please try again."
     end
   end
 
   def edit
-    @group = Group.find(params[:id])
   end
 
   def update
-    @group = Group.find(params[:id])
     @group.update(group_params)
-    redirect_to  group_messages_path(group_id: params[:id]), notice: "successfully update group"
+    redirect_to  group_messages_path(@group), notice: "successfully update group"
   end
 
   private
   def group_params
     params.require(:group).permit(:name,user_ids:[])
+  end
+
+  def set_group
+    @group = Group.find(params[:id])
   end
 end
