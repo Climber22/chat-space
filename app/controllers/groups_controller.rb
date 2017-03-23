@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
     if group.save then
     redirect_to group_messages_path(group), notice: "Successfully create group."
     else
-      redirect_to new_group_path,notice: "Unfortunately, you failed to create group. Please try again."
+      redirect_to new_group_path, notice: "Unfortunately, you failed to create group. Please try again."
     end
   end
 
@@ -24,7 +24,7 @@ class GroupsController < ApplicationController
 
   def update
     @group.update(group_params)
-    redirect_to  group_messages_path(@group), notice: "successfully update group"
+    redirect_to group_messages_path(@group), notice: "successfully update group"
   end
 
   private
