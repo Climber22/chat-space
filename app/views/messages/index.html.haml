@@ -6,7 +6,7 @@
       .group-bar__text
         %h1
           = @groups.find(params[:group_id]).name
-        %p Menbars: #{@group_menbers}
+        %p Menbars: #{@group.users.pluck(:name).join(" ")}
       = link_to "Edit", edit_group_path(id: params[:group_id]), class: "group-bar__edit"
     .chat-area
       .chat-message
