@@ -7,7 +7,7 @@
         %h1
           = @group.name
         %p Menbars: #{@group.users.pluck(:name).join(" ")}
-      = link_to "Edit", edit_group_path(id: params[:group_id]), class: "group-bar__edit"
+      = link_to "Edit", edit_group_path(@group), class: "group-bar__edit"
     .chat-area
       .chat-message
         %span.chat-message__name ryosukemaeshima
