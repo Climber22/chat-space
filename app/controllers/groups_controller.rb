@@ -3,7 +3,6 @@ class GroupsController < ApplicationController
   before_action :set_group, only:[:edit, :update]
 
   def index
-    @message = ""
     @groups = current_user.groups
   end
 
