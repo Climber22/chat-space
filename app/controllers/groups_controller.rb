@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
     if group.save then
     redirect_to group_messages_path(group), notice: "Successfully create group."
     else
-      render action: new, notice: "Unfortunately, you failed to create group. Please try again."
+      render action: "new", notice: "Unfortunately, you failed to create group. Please try again."
     end
   end
 
@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
     if @group.update(group_params) then
     redirect_to group_messages_path(@group), notice: "successfully update group"
   else
-    render action: edit, notice: "Unfortunately, you failed to edit group. Please try again."
+    render action: "edit", notice: "Unfortunately, you failed to edit group. Please try again."
   end
   end
 
