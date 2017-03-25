@@ -15,7 +15,8 @@ class GroupsController < ApplicationController
     if group.save
       redirect_to group_messages_path(group), notice: "Successfully create group."
     else
-      render :new, notice: "Unfortunately, you failed to create group. Please try again."
+      flash.now[:notice] = "Unfortunately, you failed to create group. Please try again."
+      render :new
     end
   end
 
@@ -26,7 +27,8 @@ class GroupsController < ApplicationController
     if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: "successfully update group"
     else
-    render :edit, notice: "Unfortunately, you failed to edit group. Please try again."
+      flash.now[:notice] = "Unfortunately, you failed to edit group. Please try again."
+    render :edit
     end
   end
 
