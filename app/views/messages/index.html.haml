@@ -9,7 +9,7 @@
         %p Menbars: #{@group.users.pluck(:name).join(" ")}
       = link_to "Edit", edit_group_path(@group), class: "group-bar__edit"
     .chat-area
-      = render partial: "message", collection: @messages
+      = render @messages
 
     .message-area
       = form_for([@group,@message]) do |f|
