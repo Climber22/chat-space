@@ -15,19 +15,19 @@
 |:--|:--|:--|
 |e-mail|string|null:false,unique:true|
 |password|string|null:false|
-|user_name|string|null:false,attach index|
+|name|string|null:false,attach index|
 
 ## groups table
 |column|type|
 |:--|:--|
 |group_name|string|null:false|
 
-## users_groups
+## group_users table
 ### (for connecting users and groups as n : m)
 |column|type|
 |:--|:--|
-|groups_id|references|
-|users_id|references|
+|group_id|references|
+|user_id|references|
 
 # association definition
 

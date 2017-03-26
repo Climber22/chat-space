@@ -4,15 +4,21 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 20px 20px 0 20px;
+    width: 300px;
     background-color: $left-content-bottom;
     &__item {
-        margin-bottom: 40px;
-        h2 {
+        a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 20px;
+            width: 100%;
+        }
+        &--upper {
             font-size: 15px;
             margin-bottom: 5px;
         }
-        p {
+        &--bottom {
             font-size: 11px;
         }
     }

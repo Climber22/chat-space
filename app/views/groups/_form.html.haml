@@ -1,0 +1,17 @@
+= form_for(@group) do |f|
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :name, "グループ名", class: "chat-group-form__label"
+    .chat-group-form__field--right
+      = f.text_field :name, class: "chat-group-form__input", placeholder: "グループ名を入力してください"
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :user_ids_1, "チャットメンバー"
+    .chat-group-form__field--right
+      #chat-group-users
+        = f.collection_check_boxes :user_ids, User.where.not(id: current_user.id), :id, :name
+        = f.hidden_field :user_id, name: "group[user_ids][]", value: current_user.id
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+    .chat-group-form__field--right
+      = f.submit "Save", class: "chat-group-form__action-btn"
