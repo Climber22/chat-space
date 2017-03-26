@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     if message.save
       redirect_to group_messages_path(group)
     else
-      flash[:alert] = message.errors.full_messages
+      flash[:alert] = message.errors.full_messages[0]
       redirect_to group_messages_path(group)
     end
   end
