@@ -6,12 +6,11 @@
   = link_to new_group_path, class: "user__icon user__icon--left" do
     = fa_icon "pencil-square-o lg"
 %ul.group-name-list
-  - if groups != nil
-    - groups.each do |group|
-      %li.group-name-list__item
-        = link_to group_messages_path(group_id: group.id) do
-          %span.group-name-list__item--upper
-            =group.name
-          %br
-          %span.group-name-list__item--bottom test
+  - groups.each do |group|
+    %li.group-name-list__item
+      = link_to group_messages_path(group_id: group.id) do
+        %span.group-name-list__item--upper
+          =group.name
+        %br
+        %span.group-name-list__item--bottom test
 
