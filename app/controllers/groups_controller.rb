@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
   end
 
   def create
+    binding.pry
     group = Group.new(group_params)
     if group.save
       redirect_to group_messages_path(group), notice: "Successfully create group."
@@ -34,9 +35,7 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    group = params.require(:group)
-    group[:user_ids] << group[:user_id]
-    group.permit(:name,user_ids:[])
+    params.require(:group).permit(:name,user_ids:[])
   end
 
   def set_group
