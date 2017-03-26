@@ -9,18 +9,12 @@
         %p Menbars: #{@group.users.pluck(:name).join(" ")}
       = link_to "Edit", edit_group_path(@group), class: "group-bar__edit"
     .chat-area
-      .chat-message
-        %span.chat-message__name ryosukemaeshima
-        %span.chat-message__date 2016/10/02 06:27:07
-        %p.chat-message__text testmessage1
-      .chat-message
-        %span.chat-message__name ryosukemaeshima
-        %span.chat-message__date 2016/10/02 06:27:07
-        %p.chat-message__text testmessage1
-      .chat-message
-        %span.chat-message__name ryosukemaeshima
-        %span.chat-message__date 2016/10/02 06:27:07
-        %p.chat-message__text testmessage1
+      - if @messages != nil
+        - @messages.each do |message|
+          .chat-message
+            %span.chat-message__name #{message.user.name}
+            %span.chat-message__date #{message.created_at}
+            %p.chat-message__text #{message.body}
 
     .message-area
       = form_for([@group,@message]) do |f|
