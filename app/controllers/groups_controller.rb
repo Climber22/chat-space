@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
     if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: "successfully update group"
     else
-    render :edit
+      render :edit
     end
   end
 
