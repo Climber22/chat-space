@@ -1,3 +1,6 @@
+- if @group.errors.any?
+  - @group.errors.full_messages.each do |e_message|
+    = content_tag(:header, e_message)
 = form_for(@group) do |f|
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
