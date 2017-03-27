@@ -11,11 +11,10 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.new(group_params)
-    if group.save
+    @group = Group.new(group_params)
+    if @group.save
       redirect_to group_messages_path(group), notice: "Successfully create group."
     else
-      flash.now[:alert] = "Unfortunately, you failed to create group. Please try again."
       render :new
     end
   end
@@ -27,8 +26,7 @@ class GroupsController < ApplicationController
     if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: "successfully update group"
     else
-      flash.now[:alert] = "Unfortunately, you failed to edit group. Please try again."
-    render :edit
+      render :edit
     end
   end
 

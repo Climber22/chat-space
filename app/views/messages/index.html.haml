@@ -9,21 +9,10 @@
         %p Menbars: #{@group.users.pluck(:name).join(" ")}
       = link_to "Edit", edit_group_path(@group), class: "group-bar__edit"
     .chat-area
-      .chat-message
-        %span.chat-message__name ryosukemaeshima
-        %span.chat-message__date 2016/10/02 06:27:07
-        %p.chat-message__text testmessage1
-      .chat-message
-        %span.chat-message__name ryosukemaeshima
-        %span.chat-message__date 2016/10/02 06:27:07
-        %p.chat-message__text testmessage1
-      .chat-message
-        %span.chat-message__name ryosukemaeshima
-        %span.chat-message__date 2016/10/02 06:27:07
-        %p.chat-message__text testmessage1
+      = render @messages
 
     .message-area
-      = form_for(@message) do |f|
+      = form_for([@group,@message]) do |f|
         .wrapper
           = f.text_field :body, placeholder: "type a message", class: "message-area__text"
         = f.label :image, class: "message-area__image" do
