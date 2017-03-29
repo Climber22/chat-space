@@ -50,6 +50,10 @@ group :development do
   gem "erb2haml"
 end
 
+group :test do
+  gem "faker"
+end
+
 gem 'haml-rails'
 gem "font-awesome-rails"
 gem 'devise'
