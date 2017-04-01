@@ -33,7 +33,7 @@ describe MessagesController do
     end
 
     describe "when user didn't sign in" do
-      it "redirects to user_session without sign in" do
+      it "redirects to user_session" do
         get :index, params: {group_id: group.id}
         expect(response).to redirect_to user_session_path
       end
@@ -69,7 +69,7 @@ describe MessagesController do
       end
     end
     describe "when user didn't sign in" do
-      it "redirects to user_session without sign in" do
+      it "redirects to user_session" do
         message_c = attributes_for(:message, user_id: user.id, group_id: group.id)
         post :create, params:{message: message_c, group_id: group.id}
         expect(response).to redirect_to user_session_path
