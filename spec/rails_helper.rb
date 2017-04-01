@@ -4,7 +4,6 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'devise'
-require File.expand_path("spec/support/controller_macros.rb")
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
