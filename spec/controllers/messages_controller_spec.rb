@@ -9,7 +9,7 @@ describe MessagesController do
   end
   describe "GET #index" do
     before do
-      get :index, group_id: group.id
+      get :index, params: {group_id: group.id}
     end
 
     it "assigns the requested groups to @groups" do
@@ -20,9 +20,7 @@ describe MessagesController do
       expect(assigns(:group)).to match(group)
     end
     it "assigns the requested message to @message" do
-      message_in = build(:message, body: nil, user_id: nil, group_id: nil, created_at: nil, updated_at: nil)
-      # binding.pry
-      # expect(assigns(:message)).to be_a_new(message_in)
+      expect(assigns(:message)).to be_a_new(Message)
     end
     it "assigns the requested messages to @messages" do
       messages = group.messages
@@ -34,29 +32,26 @@ describe MessagesController do
   end
 
   describe "POST #create" do
-    before do
-      message_c = (attributes_for (:message)).merge(user_id:user.id,group_id:group.id)
-      message_f = message_c
-      message_f[:body] = nil
+    describe "when body has content" do
+      it "renders the :index template if saving of message is success" do
+        message_c = (attributes_for (:message)).merge(user_id:user.id,group_id:group.id)
+        post :create, message: message_c, group_id: group.id
+        expect(response).to redirect_to group_messages_path(group)
+      end
     end
-    it "renders the :index template if saving of message is success" do
-      message_c = (attributes_for (:message)).merge(user_id:user.id,group_id:group.id)
-      post :create, message: message_c, group_id: group.id
-      expect(response).to redirect_to group_messages_path(group)
-    end
-    it "renders the :index template if saving of message is success" do
-      message_c = (attributes_for (:message)).merge(user_id:user.id,group_id:group.id)
-      message_f = message_c
-      message_f[:body] = nil
-      post :create, message: message_f, group_id: group.id
-      expect(response).to redirect_to group_messages_path(group)
-    end
-    it "makes error message when body of message is nil" do
-      message_c = (attributes_for (:message)).merge(user_id:user.id,group_id:group.id)
-      message_f = message_c
-      message_f[:body] = nil
-      post :create, message: message_f, group_id: group.id
-      expect(flash[:alert]).not_to be_empty
+    describe "when body is nil" do
+      before do
+        message_c = (attributes_for (:message)).merge(user_id:user.id,group_id:group.id)
+        message_f = message_c
+        message_f[:body] = nil
+        post :create, message: message_f, group_id: group.id
+      end
+      it "renders the :index template if saving of message is success" do
+        expect(response).to redirect_to group_messages_path(group)
+      end
+      it "makes error message when body of message is nil" do
+        expect(flash[:alert]).not_to be_empty
+      end
     end
   end
 end
