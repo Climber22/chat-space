@@ -8,7 +8,7 @@ FactoryGirl.define do
     updated_at { Faker::Time.between(3.days.ago, Time.now, :all) }
     name { Faker::Name.name }
     after(:create) do |user|
-      create(:group_user, group: create(:group), user: user)
+      user.groups << create(:group)
     end
   end
 end
