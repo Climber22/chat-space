@@ -48,7 +48,11 @@ describe MessagesController do
       end
 
       describe "when body has content" do
-        it "renders the :index template if saving of message is success" do
+        it "register new message" do
+          message_c = attributes_for(:message, user_id: user.id, group_id: group.id)
+          expect{post :create, params:{message: message_c, group_id: group.id}}.to change(Message, :count).by(1)
+        end
+        it "renders the :index template" do
           message_c = attributes_for(:message, user_id: user.id, group_id: group.id)
           post :create, params:{message: message_c, group_id: group.id}
           expect(response).to redirect_to group_messages_path(group)
