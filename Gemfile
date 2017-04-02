@@ -37,6 +37,9 @@ group :development, :test do
   gem 'byebug'
   gem "pry"
   gem "pry-doc"
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', "~> 4.4.1"
+    gem "faker"
 end
 
 group :development do
@@ -46,6 +49,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem "erb2haml"
+end
+
+group :test do
+
+  gem 'rails-controller-testing'
 end
 
 gem 'haml-rails'
