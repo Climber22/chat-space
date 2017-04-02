@@ -64,7 +64,7 @@ describe MessagesController do
           message_f = attributes_for(:message, body: nil, user_id: user.id, group_id: group.id)
           post :create, params:{message: message_f, group_id: group.id}
         end
-        it "renders the :index template if saving of message is success" do
+        it "renders the :index template" do
           expect(response).to redirect_to group_messages_path(group)
         end
         it "makes error message when body of message is nil" do
