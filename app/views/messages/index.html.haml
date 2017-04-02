@@ -12,7 +12,7 @@
       = render @messages
 
     .message-area
-      = form_for([@group,@message]) do |f|
+      = form_for([@group,@message], remote: true)do |f|
         .wrapper
           = f.text_field :body, placeholder: "type a message", class: "message-area__text"
         = f.label :image, class: "message-area__image" do
