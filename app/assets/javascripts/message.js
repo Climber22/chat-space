@@ -1,23 +1,17 @@
 $(function(){
   function buildHTML(data){
-    var message = [];
-    console.log(data);
-    message.push( $('<span class="chat-message__name">').append(data[1]));
-    message.push($('<span class="chat-message__date">').append(data[0].created_at));
-    message.push($('<p class="chat-message__text">').append(data[0].body));
-    $(".chat-area").append('<div class="chat-message"></div');
-    for (var i = 0; i < 3; i++){
-      $(".chat-message:last").append(message[i]);
-    }
+    var html = $(`<span class="chat-message__name">${data.user.name}</span><span class="chat-message__date">${data.message.date}</span><p class="chat-message__text">${data.message.body}</p>`).wrap('<div class="chat-message"></div>');
+    return html;
   }
 
   $('.new_message').on('submit', function(e){
     e.preventDefault();
-    var messageField = $(".message-area__text")
+    var messageField = $("#message_body")
     var message = messageField.val();
+    var url = $(this).prop("action");
     $.ajax({
       type: "POST",
-      url: "/groups/"+59+"/messages.json",
+      url: `${url}.json`,
       data: {
         message: {
           body: message
@@ -26,9 +20,9 @@ $(function(){
       dataType: "json"
     })
     .done(function(data){
-      console.log(data);
-      buildHTML(data);
-      messageField.val('');
+      var html = buildHTML(data);
+      $(".chat-area").append(html);
+      $(".new_message")[0].reset();
       $(".message-area__button").prop("disabled",false);
     })
     .fail(function() {
