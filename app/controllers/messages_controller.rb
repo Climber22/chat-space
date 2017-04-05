@@ -8,14 +8,11 @@ class MessagesController < ApplicationController
 
   def create
     group = Group.find(params[:group_id])
-    message = Message.new(message_params)
-    message_n = []
-    message_n << message
-    message_n << message.user.name
-    if message.save
+    @message = Message.new(message_params)
+    if @message.save
       respond_to do |format|
         format.html { redirect_to group_messages_path(group) }
-        format.json { render json: message_n }
+        format.json { render :create, format: [:json], handlers: [:jbuilder] }
       end
     else
       redirect_to group_messages_path(group), alert: message.errors.full_messages[0]
