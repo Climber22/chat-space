@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to group_messages_path(group), notice: "Successfully create group."
+      redirect_to group_messages_path(@group), notice: "Successfully create group."
     else
       render :new
     end
