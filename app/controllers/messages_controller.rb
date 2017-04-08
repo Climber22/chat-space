@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
         format.json { render :create, format: [:json], handlers: [:jbuilder] }
       end
     else
-      redirect_to group_messages_path(group), alert: message.errors.full_messages[0]
+      redirect_to group_messages_path(group), alert: @message.errors.full_messages[0]
     end
   end
 
