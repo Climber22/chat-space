@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(data){
-    var html = `<div class="chat-message>
-                  <span class="chat-message__name">${data.message.user_name}</span>
+    var html = `<div class="chat-message">
+                  <span class='chat-message__name'>${data.message.user_name}</span>
                   <span class="chat-message__date">${data.message.date}</span>
                   <p class="chat-message__text">${data.message.body}</p>
                 </div>`;
@@ -25,7 +25,7 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $(".chat-area").append($(html));
+      $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last").offset().top});
       $(".new_message")[0].reset();
       $(".message-area__button").prop("disabled",false);
     })
