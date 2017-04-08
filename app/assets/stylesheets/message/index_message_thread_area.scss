@@ -8,4 +8,5 @@
     padding: 46px 40px 1px 40px;
     background-color: $right-content-middle;
     @include clearfix;
+    overflow: scroll;
 }
