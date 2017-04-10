@@ -15,7 +15,10 @@ class MessagesController < ApplicationController
         format.json { render :create }
       end
     else
-      redirect_to group_messages_path(group), alert: @message.errors.full_messages[0]
+      respond_to do |format|
+        format.html { redirect_to group_messages_path(group), alert: @message.errors.full_messages[0] }
+        format.json { render :create}
+      end
     end
   end
 
