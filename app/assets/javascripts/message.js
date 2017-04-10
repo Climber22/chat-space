@@ -1,5 +1,5 @@
 $(function(){
-  function buildHTML_message(data){
+  function buildHTMLMessage(data){
     var html = `<div class="chat-message">
                   <span class='chat-message__name'>${data.message.user_name}</span>
                   <span class="chat-message__date">${data.message.date}</span>
@@ -7,11 +7,11 @@ $(function(){
                 </div>`;
     return html;
   }
-  function buildHTML_error(data) {
-    if(data){}
+  function buildHTMLError(data) {
+    var html = `<div class='flash-alert'>${data.message.error_message}</div>`;
+    return html
       $("body").prepend("<div class='flash-alert'>" + data.message.error_message + "</div>");
-      return $(".flash-" + type).delay(5000).slideUp('slow');
-    }
+      $(".flash-alert").delay(5000).slideUp('slow');
   };
 
   $('#new_message').on('submit', function(e){
@@ -30,11 +30,16 @@ $(function(){
       dataType: "json"
     })
     .done(function(data){
-      var html = buildHTML_message(data);
-      var error = buildHTML_error(data);
-      $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last").offset().top});
-      $(".new_message")[0].reset();
-      $(".message-area__button").prop("disabled",false);
+      if(data.message.error_message){
+        var html = buildHTMLError(data);
+        $("body").prepend(html);
+        $(".flash-alert").delay(5000).slideUp('slow');
+      }else{
+        var html = buildHTMLMessage(data);
+        $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last").offset().top});
+        $(".new_message")[0].reset();
+        $(".message-area__button").prop("disabled",false);
+      }
     })
     .fail(function(jqXHR) {
       alert("ajax failed");
