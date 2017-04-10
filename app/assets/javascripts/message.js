@@ -9,9 +9,8 @@ $(function(){
   }
   var show_ajax_message;
   show_ajax_message = function(msg, type) {
-    alert(msg);
     $("body").prepend("<div class='flash-" + type + "'>" + msg + "</div>");
-    return $("#flash-" + type).delay(5000).slideUp('slow');
+    return $(".flash-" + type).delay(5000).slideUp('slow');
   };
 
   $('.new_message').on('submit', function(e){
