@@ -7,6 +7,12 @@ $(function(){
                 </div>`;
     return html;
   }
+  var show_ajax_message;
+  show_ajax_message = function(msg, type) {
+    alert(msg);
+    $("body").prepend("<div class='flash-" + type + "'>" + msg + "</div>");
+    return $("#flash-" + type).delay(5000).slideUp('slow');
+  };
 
   $('.new_message').on('submit', function(e){
     e.preventDefault();
@@ -29,8 +35,11 @@ $(function(){
       $(".new_message")[0].reset();
       $(".message-area__button").prop("disabled",false);
     })
-    .fail(function() {
-      alert('error');
+    .fail(function(jqXHR) {
+      var e_message, e_type;
+      e_message = jqXHR.getResponseHeader("X-Message");
+      e_type = jqXHR.getResponseHeader("X-Message-type");
+      return show_ajax_message(e_message, e_type);
     });
   });
 });
