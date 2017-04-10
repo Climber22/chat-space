@@ -32,8 +32,6 @@ $(function(){
     .done(function(data){
       if(data.message.error_message){
         var html = buildHTMLError(data);
-        $("body").prepend(html);
-        $(".flash-alert").delay(5000).slideUp('slow');
       }else{
         var html = buildHTMLMessage(data);
         $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last").offset().top});
