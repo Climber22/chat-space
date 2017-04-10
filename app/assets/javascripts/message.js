@@ -35,12 +35,14 @@ $(function(){
       }else{
         var html = buildHTMLMessage(data);
         $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last").offset().top});
-        $(".new_message")[0].reset();
-        $(".message-area__button").prop("disabled",false);
       }
     })
     .fail(function(jqXHR) {
       alert("ajax failed");
+    })
+    .always(function(){
+      $(".new_message")[0].reset();
+      $(".message-area__button").prop("disabled",false);
     });
   });
 });
