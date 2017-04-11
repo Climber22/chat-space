@@ -1,4 +1,4 @@
-  message.body @message.body
-  message.date @message.created_at
-  message.user_name @message.user.name
-  message.error_message @message.errors.full_messages[0]
+  json.body message.body
+  json.date message.created_at
+  json.user_name message.user.name
+  json.error_message message.errors.full_messages[0]
