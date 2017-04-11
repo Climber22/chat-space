@@ -10,8 +10,6 @@ $(function(){
   function buildHTMLError(data) {
     var html = `<div class='flash-alert'>${data.message.error_message}</div>`;
     return html
-      $("body").prepend("<div class='flash-alert'>" + data.message.error_message + "</div>");
-      $(".flash-alert").delay(5000).slideUp('slow');
   };
 
   $('#new_message').on('submit', function(e){
@@ -32,6 +30,8 @@ $(function(){
     .done(function(data){
       if(data.message.error_message){
         var html = buildHTMLError(data);
+        $("body").prepend(html);
+        $(".flash-alert").delay(5000).slideUp('slow');
       }else{
         var html = buildHTMLMessage(data);
         $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last").offset().top});
