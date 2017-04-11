@@ -13,9 +13,15 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to group_messages_path(@group), notice: "Successfully create group."
+      respond_to do |format|
+        format.html {redirect_to group_messages_path(@group), notice: "Successfully create group." }
+        format.json
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.json
+      end
     end
   end
 
