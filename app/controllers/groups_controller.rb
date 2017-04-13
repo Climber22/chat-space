@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    binding.pry
     @user = User.new
   end
 
@@ -36,6 +37,11 @@ class GroupsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def search
+    binding.pry
+    User.where("name Like(?)","%keyword%")
   end
 
   private
