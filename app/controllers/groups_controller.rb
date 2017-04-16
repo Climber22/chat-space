@@ -14,20 +14,13 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      respond_to do |format|
-        format.html {redirect_to group_messages_path(@group), notice: "Successfully create group." }
-        format.json
-      end
+      redirect_to group_messages_path(@group), notice: "Successfully create group."
     else
-      respond_to do |format|
-        format.html { render :new }
-        format.json
-      end
+      render :new
     end
   end
 
   def edit
-    binding.pry
     @user = User.new
   end
 
@@ -40,8 +33,18 @@ class GroupsController < ApplicationController
   end
 
   def search
-    binding.pry
-    User.where("name Like(?)","%keyword%")
+    respond_to do |format|
+      format.json {
+        keyword = params[:user_name][:keyword]
+        if(params[:action_before] == "new")
+          @users = User.where("name Like(?)","%#{keyword}%").where.not(id: current_user.id)
+        else
+          group_id = params[:group][:id]
+          @users_already = Group.find(group_id).users
+          @users = User.where("name Like(?)","%#{keyword}%").where.not(id: current_user.id).where.not(id: @users_already.ids)
+        end
+      }
+    end
   end
 
   private
