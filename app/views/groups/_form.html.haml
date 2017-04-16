@@ -11,21 +11,25 @@
       = f.text_field :name, class: "chat-group-form__input", placeholder: "グループ名を入力してください"
   .chat-group-form__field.clearfix
     = fields_for(@user) do |user|
-      .chat-group-form__field--left#user_name{data: {user: User.all}}
+      .chat-group-form__field--left
         = user.label "チャットメンバーを追加", class: "chat-group-form__label"
       .chat-group-form__field--right
-        #chat-group-users
-          = user.text_field :name, class: "chat-group-form__input", placeholder: "Please input chat-member's name you want"
+        #chat-group-users.clearfix
+          = user.text_field :name, class: "chat-group-form__input clearfix", placeholder: "Please input chat-member's name you want"
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :user, "チャットメンバー", class: "chat-group-form__label"
-    #chat-group-form__fiels--right
+    .chat-group-form__field--right#stage
       .chat-group-user.clearfix
         %p.chat-group-user__name
-          = current_user.name
-        - @group.users.each do |g_user|
-          %p.chat-group-user__name
-            = g_user.name
+          -if (params[:action] == "new")
+            = current_user.name
+            = f.hidden_field :user_id, name: "group[user_ids][]", value: current_user.id
+          -else
+            - @group.users.each do |g_user|
+              %p.chat-group-user__name
+                = g_user.name
+              = f.hidden_field :user_id, name:"group[user_ids][]", value: g_user.id
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
