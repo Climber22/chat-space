@@ -1,8 +1,8 @@
 $(function(){
-  function buildHTMLNameResult(data){
+  function buildHTMLNameResultNew(users){
     var html = "";
-    $.each(data.users, function(index, user){
-      var name_area = `<li class = 'chat-group-user' id = ${user.id}>
+    $.each(users, function(index, user){
+      var name_area = `<li class = 'chat-group-user' data-user_id = ${user.id}>
                          <div class = "chat-group-user__name">
                            ${user.name}
                          </div>
@@ -17,11 +17,12 @@ $(function(){
     return html;
   }
 
+
   function buildHTMLNameStage(html_stage){
     html_stage.find("a").html("削除");
     html_stage.find("a").removeClass("chat-group-user__btn--add").addClass("chat-group-user__btn--remove");
     var id = $(html_stage).attr("id");
-    var hidden_form = `<input name="group[user_ids][]" type="hidden" value = ${id} id="group_user_id" />`;
+    var hidden_form = `<input name="group[user_ids][]" type="hidden" value = "${id}" />`;
     $(html_stage).append(hidden_form);
     return html_stage;
   }
@@ -56,14 +57,14 @@ $(function(){
           if( !($("#chat-group-users ul").size()) ){
             $("#chat-group-users").append("<ul class = 'user-search-result'></ul>");
           }
-          var html_result = buildHTMLNameResult(data);
+          var html_result = buildHTMLNameResultNew(data.users);
           $("#chat-group-users ul").append(html_result);
 
           $(".chat-group-user__btn--add").on("click", function(e){
             e.preventDefault();
-            var html_stage = $(this).parents("li");
+            var html_result = $(this).parents("li");
             $(this).parents(".chat-group-user").remove();
-            html_stage = buildHTMLNameStage(html_stage);
+            var html_stage = buildHTMLNameStage(html_result);
             if( !($("#stage #user-stage").size()) ){
               $("#stage").append("<div id='user-stage'></div>");
             }
@@ -71,6 +72,11 @@ $(function(){
               $("#user-stage").append("<ul class = 'user-search-stage'></ul>");
             }
             $("#user-stage ul").append(html_stage);
+          });
+
+          $(".chat-group-user__btn--remove").on("click", function(e){
+            e.preventDefault();
+            console.log("test");
           });
 
         })
