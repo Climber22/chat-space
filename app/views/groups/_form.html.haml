@@ -14,7 +14,7 @@
       = f.label "チャットメンバーを追加", class: "chat-group-form__label"
     .chat-group-form__field--right
       #chat-group-users.clearfix
-        = text_field_tag name: "user_name", class: "chat-group-form__input clearfix", placeholder: "Please input chat-member's name you want"
+        = text_field_tag "user_name","", class: "chat-group-form__input clearfix", placeholder: "Please input chat-member's name you want"
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :user, "チャットメンバー", class: "chat-group-form__label"
