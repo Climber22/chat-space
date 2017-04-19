@@ -45,7 +45,7 @@ $(function(){
   function buildHTMLNameResultAgain(htmlResultAgain){
     htmlResultAgain.find("a").html("追加").removeClass("chat-group-user__btn--remove").addClass("chat-group-user__btn--add");
     htmlResultAgain.find("input").remove();
-    if( $("#chat-group-users ul").size() ){
+    if( !($("#chat-group-users ul").size()) ){
       htmlResultAgain = $("<ul class = 'user-search-result'></ul>").append(htmlResultAgain);
     }
     return htmlResultAgain;
