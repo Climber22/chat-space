@@ -21,7 +21,7 @@ $(function(){
   }
 
   function buildHTMLNameResultNew(users){
-    var html = $("<ul class = 'user-search-result'></ul>");
+    var html = $("<ul class = 'chat-group-member'></ul>");
     var listFlg = false;
     $.each(users, function(index, user){
       if(checkOverlap(user.id)){
@@ -50,9 +50,6 @@ $(function(){
   function buildHTMLNameResultAgain(htmlResultAgain){
     htmlResultAgain.find("a").html("追加").removeClass("chat-group-user__btn--remove").addClass("chat-group-user__btn--add");
     htmlResultAgain.find("input").remove();
-    if( !($("#chat-group-users ul").size()) ){
-      htmlResultAgain = $("<ul class = 'user-search-result'></ul>").append(htmlResultAgain);
-    }
     return htmlResultAgain;
   }
 
@@ -84,7 +81,7 @@ $(function(){
     $(this).parents("li").remove();
     htmlResultAgain = buildHTMLNameResultAgain(htmlResultAgain);
     if( !($("#chat-group-users ul").size()) ){
-      $("#chat-group-users").append("<ul class = 'chat-group-member'></ul>");
+      $("#chat-group-users").append("<ul class = 'user-search-result'></ul>");
     }
     $("#chat-group-users ul").append(htmlResultAgain);
   });
