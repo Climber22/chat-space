@@ -87,13 +87,6 @@ $(function(){
   var keyword_before = "";
   $("#user_name").keyup(function(e){
       var keyword = $(this).val();
-      if( $(".edit_group").size()){
-        var group_id = $(".edit_group").attr("id").replace(/edit_group_/, "");
-        var action = "edit";
-      }else{
-        var group_id = "";
-        var action = "new";
-      }
       if(keyword == ""){
         keyword_before = "";
         $("#chat-group-users ul").remove();
