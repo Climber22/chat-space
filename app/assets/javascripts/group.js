@@ -1,14 +1,7 @@
 $(function(){
 
   function checkOverlap(userId){
-    var resultLists = $(".user-search-result li");
     var overlapNo = true;
-    $.each(resultLists, function(index, resultList){
-      var userIdAlready = $(resultList).attr("data-user-id");
-      if( userIdAlready == userId){
-        overlapNo = false;
-      }
-    });
 
     var memberLists = $(".chat-group-member li");
     $.each(memberLists, function(index, memberList){
@@ -16,7 +9,7 @@ $(function(){
       if( userIdMember == userId ){
         overlapNo = false;
       }
-    })
+    });
     return overlapNo;
   }
 
