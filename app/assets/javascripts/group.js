@@ -96,9 +96,7 @@ $(function(){
           type: "GET",
           url: "/users/search.json",
           data: {
-            user_name: {
-              keyword: keyword
-            }
+            keyword: keyword
           },
           dataType: "json"
         })
@@ -107,6 +105,7 @@ $(function(){
           $("#chat-group-users").append(html_result);
           })
         .fail(function(){
+          alert("ajax failed");
         });
       }
   });
