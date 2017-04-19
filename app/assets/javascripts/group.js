@@ -90,8 +90,7 @@ $(function(){
       if(keyword == ""){
         keyword_before = "";
         $("#chat-group-users ul").remove();
-      }else if(keyword_before == keyword){
-      }else{
+      }else if(keyword_before != keyword){
         keyword_before = keyword;
         $.ajax({
           type: "GET",
