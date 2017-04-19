@@ -1,6 +1,6 @@
 $(function(){
 
-  function checkOverlap(user_id){
+  function checkOverlap(userId){
     var resultLists = $(".user-search-result li");
     var overlapNo = true;
     $.each(resultLists, function(index, resultList){
@@ -92,6 +92,7 @@ $(function(){
   var keywordBefore = "";
   $("#user_name").keyup(function(e){
       var keyword = $(this).val();
+      $("#chat-group-users ul").remove();
       if(keyword == ""){
         keywordBefore = "";
         $("#chat-group-users ul").remove();
