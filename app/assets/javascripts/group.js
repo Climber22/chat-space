@@ -22,6 +22,7 @@ $(function(){
 
   function buildHTMLNameResultNew(users){
     var html = $("<ul class = 'user-search-result'></ul>");
+    var listFlg = 0;
     $.each(users, function(index, user){
       if(checkOverlap(user.id)){
         var nameArea = `<li class = 'chat-group-user' data-user-id = ${user.id}>
@@ -35,11 +36,15 @@ $(function(){
                            </div>
                          </li>`;
         html = $(html).append(nameArea);
-     }else{
-      html = "";
+        listFlg = 1;
      }
     });
-    return html;
+    if(listFlg == 1){
+      return html;
+    }else{
+      html = "";
+      return html;
+    }
   }
 
   function buildHTMLNameResultAgain(htmlResultAgain){
