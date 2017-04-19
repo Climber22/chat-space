@@ -35,7 +35,7 @@ $(function(){
                              </a>
                            </div>
                          </li>`;
-        html = $(html).append(nameArea);
+        $(html).append(nameArea);
         listFlg = true;
      }
     });
