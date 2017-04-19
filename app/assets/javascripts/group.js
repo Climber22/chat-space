@@ -42,7 +42,7 @@ $(function(){
     if(listFlg){
       return html;
     }else{
-      html = "";
+      html = $("");
       return html;
     }
   }
