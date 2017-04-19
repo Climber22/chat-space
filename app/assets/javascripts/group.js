@@ -21,7 +21,7 @@ $(function(){
   }
 
   function buildHTMLNameResultNew(users){
-    var html = "<ul class = 'user-search-result'></ul>";
+    var html = $("<ul class = 'user-search-result'></ul>");
     $.each(users, function(index, user){
       if(checkOverlap(user.id)){
         var name_area = `<li class = 'chat-group-user' data-user-id = ${user.id}>
