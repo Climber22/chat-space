@@ -21,14 +21,18 @@
     .chat-group-form__field--right#stage
       .chat-group-user.clearfix
         %p.chat-group-user__name
-          -if (params[:action] == "new")
-            = current_user.name
-            = f.hidden_field :user_id, name: "group[user_ids][]", value: current_user.id
-          -else
-            - @group.users.each do |g_user|
-              %p.chat-group-user__name
+          = current_user.name
+          = f.hidden_field :user_id, name: "group[user_ids][]", value: current_user.id
+      - @group.users.each do |g_user|
+        - if g_user.id != current_user.id
+          %ul.chat-group-member
+            %li.chat-group-user{data: {user_id: g_user.id}}
+              .chat-group-user__name
                 = g_user.name
-              = f.hidden_field :user_id, name:"group[user_ids][]", value: g_user.id
+              .chat-group-user__btn
+                %a.chat-group-user__btn--remove{href:"#"}
+                  削除
+              = f.hidden_field :user_id, name: "group[user_ids][]", value: g_user.id
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right

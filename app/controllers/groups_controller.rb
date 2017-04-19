@@ -30,21 +30,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  def search
-    respond_to do |format|
-      format.json {
-        keyword = params[:user_name][:keyword]
-        if(params[:action_before] == "new")
-          @users = User.where("name Like(?)","%#{keyword}%").where.not(id: current_user.id)
-        else
-          group_id = params[:group][:id]
-          @users_already = Group.find(group_id).users
-          @users = User.where("name Like(?)","%#{keyword}%").where.not(id: current_user.id).where.not(id: @users_already.ids)
-        end
-      }
-    end
-  end
-
   private
   def group_params
     params.require(:group).permit(:name,user_ids:[])
