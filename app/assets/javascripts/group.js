@@ -92,12 +92,12 @@ $(function(){
   var keywordBefore = "";
   $("#user_name").keyup(function(e){
       var keyword = $(this).val();
-      $("#chat-group-users ul").remove();
       if(keyword == ""){
         keywordBefore = "";
         $("#chat-group-users ul").remove();
       }else if(keywordBefore != keyword){
         keywordBefore = keyword;
+        $("#chat-group-users ul").remove();
         $.ajax({
           type: "GET",
           url: "/users/search.json",
