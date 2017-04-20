@@ -60,3 +60,5 @@ gem "font-awesome-rails"
 gem 'devise'
 gem 'jquery-turbolinks'
 gem 'carrierwave'
+gem 'fog'
+gem 'dotenv'
