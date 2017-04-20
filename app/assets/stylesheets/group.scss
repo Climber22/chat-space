@@ -63,7 +63,6 @@
     }
 
     .chat-group-form__input {
-      float: left;
       width: 100%;
       line-height: 30px;
       padding: 10px 15px;
@@ -73,12 +72,14 @@
 
   .chat-group-user {
     padding: 0 15px;
+    height: 50px;
     line-height: 50px;
     font-size: 14px;
     border-bottom: 1px solid #ddd;
 
     .chat-group-user__name {
       float: left;
+      margin-right: 20px;
     }
 
     .chat-group-user__btn {
@@ -86,11 +87,11 @@
       display: inline-block;
       cursor: pointer;
 
-      &.chat-group-user__btn--add {
+      &--add {
         color: #38aef0;
       }
 
-      &.chat-group-user__btn--remove {
+      &--remove {
         color: #f05050;
       }
     }

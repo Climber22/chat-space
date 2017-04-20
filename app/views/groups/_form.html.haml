@@ -11,11 +11,28 @@
       = f.text_field :name, class: "chat-group-form__input", placeholder: "グループ名を入力してください"
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      = f.label :use, "チャットメンバー", class: "chat-group-form__label"
+      = f.label "チャットメンバーを追加", class: "chat-group-form__label"
     .chat-group-form__field--right
-      #chat-group-users
-        = f.collection_check_boxes :user_ids, User.where.not(id: current_user.id), :id, :name
-        = f.hidden_field :user_id, name: "group[user_ids][]", value: current_user.id
+      #chat-group-users.clearfix
+        = text_field_tag "user_name","", class: "chat-group-form__input clearfix", placeholder: "Please input chat-member's name you want"
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :user, "チャットメンバー", class: "chat-group-form__label"
+    .chat-group-form__field--right#stage
+      .chat-group-user.clearfix
+        %p.chat-group-user__name
+          = current_user.name
+          = f.hidden_field :user_id, name: "group[user_ids][]", value: current_user.id
+      - @group.users.each do |g_user|
+        - if g_user.id != current_user.id
+          %ul.chat-group-member
+            %li.chat-group-user{data: {user_id: g_user.id}}
+              .chat-group-user__name
+                = g_user.name
+              .chat-group-user__btn
+                %a.chat-group-user__btn--remove{href:"#"}
+                  削除
+              = f.hidden_field :user_id, name: "group[user_ids][]", value: g_user.id
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
