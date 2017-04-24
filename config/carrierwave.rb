@@ -8,7 +8,6 @@ CarrierWave.configure do |config|
     path_style: true
   }
   config.storage = :fog
-  config.fog_provider = 'fog/aws'
   config.fog_public     = true
   config.fog_attributes = {'Cache-Control' => 'public, max-age=86400'}
   onfig.remove_previously_stored_files_after_update = false
