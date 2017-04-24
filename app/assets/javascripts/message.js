@@ -14,15 +14,18 @@ $(function(){
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    var messageField = $("#message_body")
+    var messageField = $("#message_body");
     var message = messageField.val();
+    var imageField = $("#message_image");
+    var image = imageField.val();
     var url = $(this).prop("action");
     $.ajax({
       type: "POST",
       url: `${url}.json`,
       data: {
         message: {
-          body: message
+          body: message,
+          image: image
         }
       },
       dataType: "json"
