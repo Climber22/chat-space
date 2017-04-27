@@ -4,6 +4,7 @@ $(function(){
                   <span class='chat-message__name'>${data.message.user_name}</span>
                   <span class="chat-message__date">${data.message.date}</span>
                   <p class="chat-message__text">${data.message.body}</p>
+                  <img class="chat-message" src=${data.message.image.url}>
                 </div>`;
     return html;
   }
@@ -14,21 +15,19 @@ $(function(){
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    var messageField = $("#message_body");
-    var message = messageField.val();
-    var imageField = $("#message_image");
-    var image = imageField.val();
+    // var messageField = $("#message_body");
+    // var message = messageField.val();
+    // var imageField = $("#message_image");
+    // var image = imageField.val();
     var url = $(this).prop("action");
+    var formData = new FormData($('#new_message').get(0));
     $.ajax({
       type: "POST",
       url: `${url}.json`,
-      data: {
-        message: {
-          body: message,
-          image: image
-        }
-      },
-      dataType: "json"
+      data: formData,
+      processData: false,
+      contentType: false,
+      dataType: 'json'
     })
     .done(function(data){
       if(data.message.error_message){
