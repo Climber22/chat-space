@@ -1,19 +1,13 @@
 $(function(){
   function buildHTMLMessage(message){
+    var html = `<div class="chat-message">
+                  <span class='chat-message__name'>${message.user_name}</span>
+                  <span class="chat-message__date">${message.date}</span>
+                  <p class="chat-message__text">${message.body}</p>
+                </div>`;
     if(message.image.url){
-    var html = `<div class="chat-message">
-                  <span class='chat-message__name'>${message.user_name}</span>
-                  <span class="chat-message__date">${message.date}</span>
-                  <p class="chat-message__text">${message.body}</p>
-                  <img class="chat-message" src=${message.image.url}>
-                </div>`;
-              }else{
-    var html = `<div class="chat-message">
-                  <span class='chat-message__name'>${message.user_name}</span>
-                  <span class="chat-message__date">${message.date}</span>
-                  <p class="chat-message__text">${message.body}</p>
-                </div>`;
-              }
+      html += `<img class="chat-message" src=${message.image.url}>`
+    }
     return html;
   }
   function buildHTMLError(data) {
