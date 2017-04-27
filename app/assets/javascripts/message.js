@@ -1,10 +1,10 @@
 $(function(){
-  function buildHTMLMessage(data){
+  function buildHTMLMessage(message){
     var html = `<div class="chat-message">
-                  <span class='chat-message__name'>${data.message.user_name}</span>
-                  <span class="chat-message__date">${data.message.date}</span>
-                  <p class="chat-message__text">${data.message.body}</p>
-                  <img class="chat-message" src=${data.message.image.url}>
+                  <span class='chat-message__name'>${message.user_name}</span>
+                  <span class="chat-message__date">${message.date}</span>
+                  <p class="chat-message__text">${message.body}</p>
+                  <img class="chat-message" src=${message.image.url}>
                 </div>`;
     return html;
   }
@@ -31,11 +31,11 @@ $(function(){
     })
     .done(function(data){
       if(data.message.error_message){
-        var html = buildHTMLError(data);
+        var html = buildHTMLError(data.message);
         $("body").prepend(html);
         $(".flash-alert").delay(5000).slideUp('slow');
       }else{
-        var html = buildHTMLMessage(data);
+        var html = buildHTMLMessage(data.message);
         $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last").offset().top});
       }
     })
