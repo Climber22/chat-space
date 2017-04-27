@@ -2,4 +2,5 @@
   %span.chat-message__name #{message.user.name}
   %span.chat-message__date #{message.created_at}
   %p.chat-message__text #{message.body}
-  = image_tag "#{message.image}", class: "chat-message__image"
+  -if message.image?
+    = image_tag message.image, class: "chat-message__image"
