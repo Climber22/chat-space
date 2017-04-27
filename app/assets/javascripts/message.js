@@ -23,10 +23,6 @@ $(function(){
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    // var messageField = $("#message_body");
-    // var message = messageField.val();
-    // var imageField = $("#message_image");
-    // var image = imageField.val();
     var url = $(this).prop("action");
     var formData = new FormData($('#new_message').get(0));
     $.ajax({
