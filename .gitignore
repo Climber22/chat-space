@@ -11,3 +11,9 @@
 /log/*
 !/log/.keep
 /tmp
+/.env
+.env
+public/uploads
+*.jpeg
+*.jpg
+*.png

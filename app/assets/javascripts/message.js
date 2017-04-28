@@ -1,10 +1,14 @@
 $(function(){
-  function buildHTMLMessage(data){
+  function buildHTMLMessage(message){
     var html = `<div class="chat-message">
-                  <span class='chat-message__name'>${data.message.user_name}</span>
-                  <span class="chat-message__date">${data.message.date}</span>
-                  <p class="chat-message__text">${data.message.body}</p>
-                </div>`;
+                  <span class='chat-message__name'>${message.user_name}</span>
+                  <span class="chat-message__date">${message.date}</span>
+                  <p class="chat-message__text">${message.body}</p>`;
+    if(message.image.url){
+      html += `<img class="chat-message" src=${message.image.url}></div>`
+    }else{
+      html += `</div>`
+    }
     return html;
   }
   function buildHTMLError(data) {
@@ -14,26 +18,23 @@ $(function(){
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
-    var messageField = $("#message_body")
-    var message = messageField.val();
     var url = $(this).prop("action");
+    var formData = new FormData($('#new_message').get(0));
     $.ajax({
       type: "POST",
       url: `${url}.json`,
-      data: {
-        message: {
-          body: message
-        }
-      },
-      dataType: "json"
+      data: formData,
+      processData: false,
+      contentType: false,
+      dataType: 'json'
     })
     .done(function(data){
       if(data.message.error_message){
-        var html = buildHTMLError(data);
+        var html = buildHTMLError(data.message);
         $("body").prepend(html);
         $(".flash-alert").delay(5000).slideUp('slow');
       }else{
-        var html = buildHTMLMessage(data);
+        var html = buildHTMLMessage(data.message);
         $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last").offset().top});
       }
     })
