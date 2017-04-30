@@ -4,6 +4,10 @@ class MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @message = Message.new
     @messages = @group.messages.includes(:user)
+    respond_to do |format|
+      format.html
+      format.json {@update_messages = get_update_messages}
+    end
   end
 
   def create
@@ -25,5 +29,16 @@ class MessagesController < ApplicationController
   private
   def message_params
     params.require(:message).permit(:body, :image).merge(user_id: current_user.id, group_id: params[:group_id])
+  end
+
+  def get_update_messages
+    update_messages = []
+    current_message_id = params[:currentMessageId].to_i
+    if(current_message_id != Message.last.id)
+      for id in (current_message_id+1)..(Message.last.id) do
+        update_messages << Message.find(id)
+      end
+    end
+    return update_messages
   end
 end

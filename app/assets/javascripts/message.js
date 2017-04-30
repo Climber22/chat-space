@@ -1,6 +1,6 @@
 $(function(){
   function buildHTMLMessage(message){
-    var html = `<div class="chat-message">
+    var html = `<div class="chat-message" data-id="${message.id}"}>
                   <span class='chat-message__name'>${message.user_name}</span>
                   <span class="chat-message__date">${message.date}</span>
                   <p class="chat-message__text">${message.body}</p>`;
@@ -35,7 +35,7 @@ $(function(){
         $(".flash-alert").delay(5000).slideUp('slow');
       }else{
         var html = buildHTMLMessage(data.message);
-        $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last").offset().top});
+        $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last-child").offset().top});
       }
     })
     .fail(function(jqXHR) {
@@ -46,4 +46,5 @@ $(function(){
       $(".message-area__button").prop("disabled",false);
     });
   });
+
 });
