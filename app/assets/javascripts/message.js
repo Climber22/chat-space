@@ -1,20 +1,19 @@
 $(function(){
   function buildHTMLMessage(message){
-    console.log(message.image);
     var html = `<div class="chat-message" data-id="${message.id}"}>
                   <span class='chat-message__name'>${message.user_name}</span>
                   <span class="chat-message__date">${message.date}</span>
                   <p class="chat-message__text">${message.body}</p>`;
     if(message.image.url){
-      html += `<img class="chat-message" src=${message.image.url}></div>`
+      html += `<img class="chat-message" src=${message.image.url}></div>`;
     }else{
-      html += `</div>`
+      html += `</div>`;
     }
     return html;
   }
   function buildHTMLError(data) {
     var html = `<div class='flash-alert'>${data.message.error_message}</div>`;
-    return html
+    return html;
   };
 
   $('#new_message').on('submit', function(e){
@@ -48,15 +47,15 @@ $(function(){
     });
   });
 
-  setInterval(getNewMessages,1000);
+  if($("main").data("page") == "message"){
+    setInterval(getNewMessages,1000);
+  }
   function getNewMessages(){
-    var currentPageFull = window.location.href;
-    var unnecessary = "http://localhost:3000";
-    var currentPage = currentPageFull.replace(unnecessary,"");
+    var currentPage = window.location.href;
     var currentMessageId = $(".chat-message:last-child").data("id");
     $.ajax({
       type: "GET",
-      url: currentPageFull,
+      url: currentPage,
       data: {
         currentMessageId: currentMessageId
       },
@@ -64,11 +63,10 @@ $(function(){
     })
     .done(function(data){
       if(data.updateMessages.length != 0){
-        var html;
+        var html="";
         $.each(data.updateMessages, function(index, message){
           html += buildHTMLMessage(message);
-        })
-        var html = buildHTMLMessage(data.updateMessages);
+        });
         $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last-child").offset().top});
       }
     })
@@ -76,5 +74,4 @@ $(function(){
       console.error("ajax failed");
     });
   };
-
 });
