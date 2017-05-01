@@ -47,4 +47,29 @@ $(function(){
     });
   });
 
-});
+  setInterval(getNewMessages,1000);
+  function getNewMessages(){
+    var currentPageFull = window.location.href;
+    var unnecessary = "http://localhost:3000";
+    var currentPage = currentPageFull.replace(unnecessary,"");
+    var currentMessageId = $(".chat-message:last-child").data("id");
+    $.ajax({
+      type: "GET",
+      url: currentPage,
+      data: {
+        currentMessageId: currentMessageId
+      },
+      dataType: "json"
+    })
+    .done(function(data){
+      console.log(data.updateMessages);
+      if(data.updateMessages.length != 0){
+        var htmlaa = buildUpdateMessageHTML(data.updateMessages);
+        $(".chat-area").append($(htmlaa)).animate({scrollTop:$(".chat-message:last-child").offset().top});
+      }
+    })
+    .fail(function(jqXHR){
+      console.error("ajax failed");
+    });
+
+};
