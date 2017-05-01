@@ -1,5 +1,6 @@
 $(function(){
   function buildHTMLMessage(message){
+    console.log(message.image);
     var html = `<div class="chat-message" data-id="${message.id}"}>
                   <span class='chat-message__name'>${message.user_name}</span>
                   <span class="chat-message__date">${message.date}</span>
@@ -55,21 +56,25 @@ $(function(){
     var currentMessageId = $(".chat-message:last-child").data("id");
     $.ajax({
       type: "GET",
-      url: currentPage,
+      url: currentPageFull,
       data: {
         currentMessageId: currentMessageId
       },
       dataType: "json"
     })
     .done(function(data){
-      console.log(data.updateMessages);
       if(data.updateMessages.length != 0){
-        var htmlaa = buildUpdateMessageHTML(data.updateMessages);
-        $(".chat-area").append($(htmlaa)).animate({scrollTop:$(".chat-message:last-child").offset().top});
+        var html;
+        $.each(data.updateMessages, function(index, message){
+          html += buildHTMLMessage(message);
+        })
+        var html = buildHTMLMessage(data.updateMessages);
+        $(".chat-area").append($(html)).animate({scrollTop:$(".chat-message:last-child").offset().top});
       }
     })
     .fail(function(jqXHR){
       console.error("ajax failed");
     });
+  };
 
-};
+});
