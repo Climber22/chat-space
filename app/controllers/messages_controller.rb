@@ -32,10 +32,6 @@ class MessagesController < ApplicationController
   end
 
   def get_update_messages
-    current_message_id = params[:currentMessageId].to_i
-    if(current_message_id != Message.last.id)
-      update_messages = Message.where(id: (current_message_id+1)..(Message.last.id)).to_a
-      return update_messages
-    end
+    update_messages = Group.find(params[:group_id]).messages.where("id > ?",params[:currentMessageId])
   end
 end

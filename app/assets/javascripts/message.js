@@ -47,7 +47,7 @@ $(function(){
     });
   });
 
-  if($("main").data("page") == "message"){
+  if($(".main").data("page") == "message"){
     setInterval(getNewMessages,1000);
   }
   function getNewMessages(){
