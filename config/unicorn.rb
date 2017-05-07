@@ -6,6 +6,7 @@ working_directory "#{app_path}"
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"
 stderr_path "#{app_path}/log/unicorn.stderr.log"
 stdout_path "#{app_path}/log/unicorn.stdout.log"
+ENV['BUNDLE_GEMFILE'] = app_path + "/Gemfile"
 
 listen 3000
 timeout 60
