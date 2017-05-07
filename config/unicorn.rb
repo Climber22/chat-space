@@ -8,7 +8,7 @@ stderr_path "#{app_path}/log/unicorn.stderr.log"
 stdout_path "#{app_path}/log/unicorn.stdout.log"
 # ENV['BUNDLE_GEMFILE'] = app_path + "/Gemfile"
 
-listen "#{app_path}/tmp/unicorn.sock"
+listen 3000
 timeout 60
 
 preload_app true
